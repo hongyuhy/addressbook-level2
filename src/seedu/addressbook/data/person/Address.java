@@ -47,8 +47,8 @@ public class Address {
 
     @Override
     public String toString() {
-        return block.toString() + ", " + street.toString() + ", " + unit.toString() 
-        + ", " + postalcode.toString();
+        return block.toString() + "," + street.toString() + "," + unit.toString() 
+        + "," + postalcode.toString();
     }
 
     @Override
