@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -19,6 +20,8 @@ public class StorageFile {
 
     /** Default file path used if the user doesn't provide the file name. */
     public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
+
+	private static final String FILE_NOT_FOUND = "Storage File Could not be Found";
 
     /* Note: Note the use of nested classes below.
      * More info https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
@@ -140,9 +143,24 @@ public class StorageFile {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
     }
+    
 
     public String getPath() {
         return path.toString();
     }
-
+    
+    public static class StorageFileNotFoundException extends Exception {
+        public StorageFileNotFoundException(String message) {
+            super(message);
+        }
+    }
+    
+    
+	public void checkIfFileExist() throws StorageFileNotFoundException {
+		if(!Files.exists(path)){
+			throw new StorageFileNotFoundException(FILE_NOT_FOUND);
+		}
+		
+	}
+    
 }
