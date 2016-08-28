@@ -80,6 +80,13 @@ public class Main {
     private void runCommandLoopUntilExitCommand() {
         Command command;
         do {
+        	try{
+        		storage.checkIfFileExist();
+        	}
+        	catch(StorageFileNotFoundException e){
+        		ui.showFileNotFoundMessage();
+        		System.exit(0);
+        	}
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
