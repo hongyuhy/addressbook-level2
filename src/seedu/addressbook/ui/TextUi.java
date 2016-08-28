@@ -36,6 +36,7 @@ public class TextUi {
     /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
     private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
 
+
     private final Scanner in;
     private final PrintStream out;
 
@@ -165,5 +166,9 @@ public class TextUi {
     private static String getIndexedListItem(int visibleIndex, String listItem) {
         return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
     }
+
+	public void showFileNotFoundMessage() {
+		 showToUser(MESSAGE_FILE_NOT_FOUND, DIVIDER, DIVIDER);
+	}
 
 }
