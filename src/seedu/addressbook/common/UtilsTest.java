@@ -11,8 +11,8 @@ public class UtilsTest {
 	@Test
 	public void isAnyNullTest() {
 		String[] listOfString = {"hi","hello","heehee"};
-		boolean check = Utils.isAnyNull(listOfString);
-		assertEquals(false, check);
+		boolean result = Utils.isAnyNull(listOfString);
+		assertEquals(false, result);
 	}
 	
 	@Test
@@ -29,5 +29,14 @@ public class UtilsTest {
 		arrayListOf.add("hello");
 		boolean result = Utils.elementsAreUnique(arrayListOf);
 		assertEquals(true, result);
+	}
+
+	@Test
+	public void elementsAreUniqueTest2(){
+		ArrayList<String> arrayListOf = new ArrayList<String>();
+		arrayListOf.add("hi");
+		arrayListOf.add("hi");
+		boolean result = Utils.elementsAreUnique(arrayListOf);
+		assertEquals(false, result);
 	}
 }
